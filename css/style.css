@@ -190,6 +190,12 @@ h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.12; }
 .more-work p { color: var(--ink-2); font-size: .9688rem; }
 .more-work .project-client { font-size: .875rem; }
 
+.services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.services-grid article { padding: 28px 28px 32px 0; }
+.services-grid article:nth-child(odd) { padding-left: 0; border-left: 0; }
+.services-grid article:nth-child(even) { padding-left: 28px; border-left: 1px solid var(--line); }
+.services-grid article:nth-child(n+3) { border-top: 1px solid var(--line); }
+
 .svc-list { display: grid; gap: 6px; margin-top: 4px; font-size: .9375rem; color: var(--ink-2); }
 .svc-list li { position: relative; padding-left: 18px; line-height: 1.5; }
 .svc-list li::before { content: ""; position: absolute; left: 0; top: .72em; width: 8px; height: 2px; background: var(--signal); }

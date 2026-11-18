@@ -32,6 +32,8 @@
   .more-work, .education { grid-template-columns: 1fr; }
   .more-work article, .education article { padding: 22px 0; }
   .more-work article + article, .education article + article { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .services-grid article:nth-child(n) { padding: 22px 0; border-left: 0; border-top: 1px solid var(--line); }
+  .services-grid article:first-child { border-top: 0; }
   .skills { grid-template-columns: 1fr; }
   .skill { grid-template-columns: 9.5rem minmax(0, 1fr); }
 }
