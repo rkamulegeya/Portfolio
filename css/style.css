@@ -132,6 +132,7 @@ h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.12; }
 }
 .availability .dot { width: 9px; height: 9px; border-radius: 50%; background: #1f9d55; flex: none; }
 .hero h1 { margin-bottom: 24px; }
+.h1-name { display: block; margin-bottom: 14px; font: 600 clamp(1.25rem, 2.2vw, 1.75rem)/1.2 var(--font-body); color: var(--pipe); letter-spacing: 0; }
 .hero .lead { margin-bottom: 36px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .hero-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 28px; font-size: .9375rem; }
@@ -188,6 +189,10 @@ h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.12; }
 .more-work article + article { padding-left: 28px; border-left: 1px solid var(--line); }
 .more-work p { color: var(--ink-2); font-size: .9688rem; }
 .more-work .project-client { font-size: .875rem; }
+
+.svc-list { display: grid; gap: 6px; margin-top: 4px; font-size: .9375rem; color: var(--ink-2); }
+.svc-list li { position: relative; padding-left: 18px; line-height: 1.5; }
+.svc-list li::before { content: ""; position: absolute; left: 0; top: .72em; width: 8px; height: 2px; background: var(--signal); }
 
 /* ---------- Field gallery ---------- */
 .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: clamp(170px, 19vw, 250px); grid-auto-flow: dense; gap: 10px; }

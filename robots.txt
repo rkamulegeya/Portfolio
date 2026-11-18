@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /_backup-v1/
+
+Sitemap: https://stately-tiramisu-898826.netlify.app/sitemap.xml
