@@ -1,0 +1,140 @@
+/* ═══════════════════════════════════════
+   animations.css — Scroll Reveals & Motion
+═══════════════════════════════════════ */
+
+/* ── REVEAL ON SCROLL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children when parent reveals */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.12s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.19s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.26s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.33s; }
+.reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.40s; }
+
+/* ── HERO ENTRANCE ── */
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroFadeRight {
+  from { opacity: 0; transform: translateX(-24px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes heroImgReveal {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.hero-tag     { animation: heroFadeUp 0.6s 0.10s ease both; }
+.hero-name    { animation: heroFadeUp 0.6s 0.20s ease both; }
+.hero-title   { animation: heroFadeUp 0.6s 0.30s ease both; }
+.hero-sub     { animation: heroFadeUp 0.6s 0.38s ease both; }
+.hero-badges  { animation: heroFadeUp 0.6s 0.46s ease both; }
+.hero-btns    { animation: heroFadeUp 0.6s 0.54s ease both; }
+.hero-visual  { animation: heroImgReveal 0.8s 0.30s ease both; }
+
+/* ── FLOATING CARDS ── */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+.hero-card-stat  { animation: floatCard 4s 2s ease-in-out infinite; }
+.hero-card-award { animation: floatCard 4s 2.5s ease-in-out infinite; }
+
+/* ── COUNTER ANIMATION ── */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.stat-num { animation: countUp 0.6s ease both; }
+
+/* ── SHIMMER (skeleton loading) ── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  border-radius: 4px;
+}
+
+/* ── TYPING CURSOR ── */
+@keyframes blink {
+  0%, 100% { border-right-color: var(--teal); }
+  50%       { border-right-color: transparent; }
+}
+
+/* ── GRADIENT SHIFT ── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ── PAGE LOAD OVERLAY ── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--navy);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.page-loader.hidden { opacity: 0; visibility: hidden; }
+.loader-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  color: #fff;
+  animation: pulse 1s ease infinite;
+}
+.loader-logo span { color: var(--teal); }
+
+/* ── MOBILE MENU SLIDE ── */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.nav-links.open { animation: slideDown 0.25s ease both; }
+
+/* ── HOVER LIFT ── */
+.hover-lift { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.hover-lift:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(11,31,58,0.12); }
+
+/* ── FORM SUCCESS ── */
+@keyframes successPop {
+  0%   { transform: scale(0.8); opacity: 0; }
+  70%  { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.form-success { animation: successPop 0.4s ease both; }
+
+/* ── REDUCE MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
