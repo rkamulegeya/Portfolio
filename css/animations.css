@@ -1,4 +1,4 @@
-/* One orchestrated moment: the hero arrives in sequence. Nothing else animates on its own. */
+/* Motion. Everything here is switched off for visitors who ask their device to reduce motion. */
 
 @keyframes rise {
   from { opacity: 0; transform: translateY(18px); }
@@ -8,19 +8,84 @@
   from { opacity: 0; transform: scale(1.03); }
   to   { opacity: 1; transform: none; }
 }
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(31, 157, 85, .55); }
+  70%  { box-shadow: 0 0 0 10px rgba(31, 157, 85, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(31, 157, 85, 0); }
+}
+@keyframes pop {
+  from { opacity: 0; transform: scale(.94); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes zoomin {
+  from { opacity: 0; transform: scale(.96); }
+  to   { opacity: 1; transform: none; }
+}
 
 @media (prefers-reduced-motion: no-preference) {
   html { scroll-behavior: smooth; }
 
+  /* Hero arrives in sequence */
   .hero-copy > * { animation: rise .7s cubic-bezier(.2, .7, .2, 1) both; }
   .hero-copy > :nth-child(1) { animation-delay: .05s; }
   .hero-copy > :nth-child(2) { animation-delay: .15s; }
   .hero-copy > :nth-child(3) { animation-delay: .28s; }
   .hero-copy > :nth-child(4) { animation-delay: .4s; }
   .hero-copy > :nth-child(5) { animation-delay: .5s; }
-
   .hero-media > img { animation: settle .9s cubic-bezier(.2, .7, .2, 1) .15s both; }
   .plate-hero { animation: rise .7s cubic-bezier(.2, .7, .2, 1) .7s both; }
+
+  /* "Available" dot pulses */
+  .availability .dot { animation: pulse 2.2s ease-out infinite; }
+
+  /* Scroll reveal (main.js adds data-reveal, then .is-in when it scrolls into view) */
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms), transform .7s cubic-bezier(.2, .7, .2, 1) var(--d, 0ms);
+  }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+
+  /* Gallery filter and lightbox */
+  .gallery li.pop { animation: pop .4s cubic-bezier(.2, .7, .2, 1) both; }
+  .lightbox[open] img { animation: zoomin .3s ease-out; }
+
+  /* Buttons */
+  .btn { transition: background-color .2s, color .2s, border-color .2s, transform .2s, box-shadow .2s; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary:hover { box-shadow: 0 12px 22px -12px rgba(194, 65, 12, .85); }
+  .btn:active { transform: translateY(0); box-shadow: none; }
+
+  /* Nav links */
+  .nav-links a:not(.btn) { transition: color .2s, border-color .2s; }
+  .nav-links a:not(.btn):hover { border-bottom-color: var(--line); }
+  .nav-links a.is-active:not(.btn):hover { border-bottom-color: var(--signal); }
+
+  /* Projects: photo zoom + animated underline under the title */
+  .project-media { overflow: hidden; border-radius: var(--radius); }
+  .project-media img { transition: transform .9s cubic-bezier(.2, .7, .2, 1); }
+  .project:hover .project-media img { transform: scale(1.05); }
+
+  .project-body h3, .more-work h3 {
+    justify-self: start;
+    padding-bottom: 6px;
+    background: linear-gradient(var(--signal), var(--signal)) no-repeat 0 100% / 0 3px;
+    transition: background-size .45s cubic-bezier(.2, .7, .2, 1);
+  }
+  .project:hover .project-body h3, .more-work article:hover h3 { background-size: 100% 3px; }
+
+  /* Automation rows */
+  .service { transition: background-color .3s, padding-left .3s; }
+  .service:hover { background-color: rgba(255, 255, 255, .05); padding-left: 16px; }
+
+  /* Skills and education */
+  .skill, .education article { transition: transform .25s; }
+  .skill:hover { transform: translateX(4px); }
+
+  /* Floating controls */
+  .to-top { transition: opacity .25s, transform .25s, background-color .2s; }
+  .chip { transition: background-color .2s, color .2s, transform .2s; }
+  .chip:active { transform: scale(.96); }
 }
 
 @media (prefers-reduced-motion: reduce) {

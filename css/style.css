@@ -301,6 +301,28 @@ h3 { font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.12; }
 .form .btn { justify-self: start; }
 .form .btn[disabled] { opacity: .65; cursor: progress; }
 
+/* ---------- Interactive extras ---------- */
+.progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 300; background: var(--signal); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); pointer-events: none; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.chip { min-height: 40px; padding: 8px 18px; border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); font: 500 .9375rem/1 var(--font-body); cursor: pointer; }
+.chip:hover { background: var(--line); }
+.chip[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.gallery li[hidden] { display: none; }
+
+.timeline { position: relative; }
+.timeline::after { content: ""; position: absolute; left: -2px; top: 0; width: 2px; height: var(--fill, 0px); background: var(--signal); }
+[data-count] { font-variant-numeric: tabular-nums; }
+
+.to-top { position: fixed; right: 20px; bottom: 20px; z-index: 90; width: 48px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 50%; background: var(--ink); color: #fff; cursor: pointer; opacity: 0; transform: translateY(12px); pointer-events: none; box-shadow: 0 10px 24px -12px rgba(15, 28, 43, .6); }
+.to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { background: var(--signal); }
+
+.lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border: 0; border-radius: 50%; background: rgba(255, 255, 255, .14); color: #fff; font-size: 2rem; line-height: 1; cursor: pointer; }
+.lb-nav:hover { background: rgba(255, 255, 255, .28); }
+.lb-prev { left: 12px; }
+.lb-next { right: 12px; }
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--night); color: var(--on-night-muted); padding-block: 32px; font-size: .9375rem; }
 .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; }

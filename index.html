@@ -18,6 +18,7 @@
   <meta name="author" content="Ronald Kamulegeya" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#0f1c2b" />
+  <script>document.documentElement.classList.add('js')</script>
 
   <!-- Social sharing previews -->
   <meta property="og:type" content="website" />
@@ -84,6 +85,7 @@
   </svg>
 
   <a class="skip-link" href="#main">Skip to content</a>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="wrap nav">
@@ -136,9 +138,9 @@
         </div>
 
         <ul class="facts">
-          <li><strong>1,443 km</strong>East Africa Crude Oil Pipeline, Uganda to Tanzania, a $5 billion project</li>
-          <li><strong>230 kVA and 80 kVA</strong>Off-grid solar plants designed and installed for UNHCR</li>
-          <li><strong>8 projects</strong>Led end to end across medical, humanitarian, energy and automotive work</li>
+          <li><strong><span data-count="1443">1,443</span> km</strong>East Africa Crude Oil Pipeline, Uganda to Tanzania, a $5 billion project</li>
+          <li><strong><span data-count="230">230</span> kVA and <span data-count="80">80</span> kVA</strong>Off-grid solar plants designed and installed for UNHCR</li>
+          <li><strong><span data-count="8">8</span> projects</strong>Led end to end across medical, humanitarian, energy and automotive work</li>
           <li><strong>2018 winner</strong>International CAD Design Competition</li>
         </ul>
 
@@ -347,6 +349,13 @@
         <div class="section-head">
           <h2>On site</h2>
           <p class="lead">Photos from the work. Select any photo to enlarge it.</p>
+        </div>
+        <div class="chips" role="group" aria-label="Filter photos by type of work">
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="chip" data-filter="pipeline" aria-pressed="false">Pipeline</button>
+          <button type="button" class="chip" data-filter="solar" aria-pressed="false">Solar</button>
+          <button type="button" class="chip" data-filter="hvac" aria-pressed="false">HVAC</button>
+          <button type="button" class="chip" data-filter="plants" aria-pressed="false">Plants</button>
         </div>
         <ul class="gallery">
           <li class="tall"><button class="shot" type="button"><img src="images/valve-actuator-inspection.jpg" loading="lazy" alt="Inspecting a valve actuator control cabinet" /><span>Inspecting a valve actuator before installation</span></button></li>
@@ -591,8 +600,12 @@
     </div>
   </footer>
 
+  <button type="button" class="to-top" id="toTop" aria-label="Back to top"><svg class="icon icon-stroke" aria-hidden="true" viewBox="0 0 24 24"><polyline points="6 14 12 8 18 14"/></svg></button>
+
   <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
     <button type="button" class="lightbox-close" aria-label="Close photo">&times;</button>
+    <button type="button" class="lb-nav lb-prev" aria-label="Previous photo">&#8249;</button>
+    <button type="button" class="lb-nav lb-next" aria-label="Next photo">&#8250;</button>
     <figure>
       <img alt="" />
       <figcaption></figcaption>
